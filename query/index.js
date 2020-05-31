@@ -7,18 +7,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const posts = {};
-// example posts data structure
-// posts === {
-//     'werqwe': {
-//         id: 'wqwe232',
-//         title: 'ygvhbjnk',
-//         comments: [
-//             id: '12fdge',
-//             content: 'comment!'
-//         ]
-//     }
-// }
-
 
 app.get('/posts', (req, res) => {
     console.log('app.get', posts);
@@ -34,10 +22,10 @@ app.post('/events', async (req, res) => {
     }
 
     if (type === 'CommentCreated') {
-        const { id, content, postId } = data;
+        const { id, content, postId, status } = data;
 
         const post = posts[postId];
-        post.comments.push({ id, content })
+        post.comments.push({ id, content, status })
     }
 
     console.log('app.post', posts);
