@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { randomBytes} = require('crypto');
 const cors = require('cors');
 
 const app = express();
@@ -22,6 +21,7 @@ const posts = {};
 
 
 app.get('/posts', (req, res) => {
+    console.log('app.get', posts);
     res.send(posts);
 });
 app.post('/events', async (req, res) => {
@@ -39,8 +39,8 @@ app.post('/events', async (req, res) => {
         const post = posts[postId];
         post.comments.push({ id, content })
     }
-debugger;
-    console.log(posts);
+
+    console.log('app.post', posts);
 
     res.send({});
 });
