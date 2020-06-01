@@ -58,7 +58,8 @@ axios.post('/events', async (req, res) => {
                 postId,
                 content
             }
-        })
+        });
+        console.log('moderated', comments);
     }
 
     res.send({});

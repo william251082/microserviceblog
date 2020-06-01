@@ -15,6 +15,7 @@ app.get('/posts', (req, res) => {
 app.post('/events', async (req, res) => {
     const { type, data } = req.body;
 
+    console.log('app.post-before', posts);
     if (type === 'PostCreated') {
         const { id, title } = data;
 
@@ -29,7 +30,7 @@ app.post('/events', async (req, res) => {
     }
 
     if (type === 'CommentUpdated') {
-        const { postId, id, status, content } = data;
+        const { id, content, postId, status } = data;
 
         const post = posts[postId];
         const comment = post.comments.find(comment => {
@@ -37,6 +38,7 @@ app.post('/events', async (req, res) => {
         });
         comment.status = status;
         comment.content = content;
+        console.log('comment updated', comment);
     }
 
     console.log('app.post', posts);
