@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { randomBytes} = require('crypto');
+const { randomBytes } = require('crypto');
 const cors = require('cors');
 const axios = require('axios');
 
@@ -29,15 +29,15 @@ app.post('/posts/:id/comments', async (req, res) => {
             id: commentId,
             content,
             postId: req.params.id,
-            status : 'pending'
+            status: 'pending'
         }
     });
 
     res.status(201).send(comments);
 });
 
-axios.post('/events', async (req, res) => {
-    console.log('Event Received', req.body.type);
+app.post('/events', async (req, res) => {
+    console.log('Event Received:', req.body.type);
 
     const { type, data } = req.body;
 
@@ -50,7 +50,7 @@ axios.post('/events', async (req, res) => {
         });
         comment.status = status;
 
-        await axios.post('http://localhost:4005', {
+        await axios.post('http://localhost:4005/events', {
             type: 'CommentUpdated',
             data: {
                 id,

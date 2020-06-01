@@ -20,7 +20,8 @@ app.post('/events', async (req, res) => {
                 status,
                 content: data.content
             }
-        })
+        });
+        console.log('CommentModerated init')
     }
 
     res.send({});

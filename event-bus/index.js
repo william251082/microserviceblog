@@ -21,6 +21,7 @@ app.post ('/events', (req, res) => {
 });
 
 app.get('/events', (req, res) => {
+    console.log('events from event-bus', events);
     res.send(events);
 });
 
