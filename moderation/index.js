@@ -28,5 +28,6 @@ app.post('/events', async (req, res) => {
 });
 
 app.listen(4003, () => {
+    console.log('updated to v55');
     console.log('Listening to port 4003 moderation');
 });
