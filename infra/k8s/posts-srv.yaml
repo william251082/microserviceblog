@@ -4,7 +4,6 @@ metadata:
   name: posts-srv
 spec:
   type: NodePort
-  replicas: 1
   selector:
     app: posts
   ports:
