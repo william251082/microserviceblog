@@ -1,1 +1,5 @@
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
+
+
+ Hosts File Tweak
+ /etc/hosts -> 172.17.0.2 posts.com
